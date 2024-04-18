@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- DTD파일 가져옴. PUBLIC : 표준안 -->
+
+  
+  
+  
+<mapper namespace="emp">
+
+  <select id="search_empno" parameterType="String" resultType="homework.EmpVO">
+    SELECT e.empno, e.ename, e.job, e.hiredate, d.dname, l.city
+	FROM
+	((dept d INNER JOIN locations l ON d.loc_code = l.loc_code)
+	INNER JOIN emp e ON e.deptno = d.deptno)
+	WHERE e.empno LIKE CONCAT('%',#{empno},'%')
+  </select>
+
+  <select id="search_ename" parameterType="String" resultType="homework.EmpVO">
+    SELECT e.empno, e.ename, e.job, e.hiredate, d.dname, l.city
+	FROM
+	((dept d INNER JOIN locations l ON d.loc_code = l.loc_code)
+	INNER JOIN emp e ON e.deptno = d.deptno)
+	WHERE e.ename LIKE CONCAT('%',#{ename},'%')
+  </select>
+
+  <select id="search_job" parameterType="String" resultType="homework.EmpVO">
+    SELECT e.empno, e.ename, e.job, e.hiredate, d.dname, l.city
+	FROM
+	((dept d INNER JOIN locations l ON d.loc_code = l.loc_code)
+	INNER JOIN emp e ON e.deptno = d.deptno)
+	WHERE e.job LIKE CONCAT('%',#{job},'%')
+  </select>
+
+  <select id="search_deptno" parameterType="String" resultType="homework.EmpVO">
+    SELECT e.empno, e.ename, e.job, e.hiredate, d.dname, l.city
+	FROM
+	((dept d INNER JOIN locations l ON d.loc_code = l.loc_code)
+	INNER JOIN emp e ON e.deptno = d.deptno)
+	WHERE d.dname LIKE CONCAT('%',#{dname},'%')
+  </select>
+  
+
+</mapper>

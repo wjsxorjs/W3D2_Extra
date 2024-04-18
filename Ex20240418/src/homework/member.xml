@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- DTD파일 가져옴. PUBLIC : 표준안 -->
+
+  
+  
+  
+<mapper namespace="member">
+
+  <!-- 로그인 기능 -->
+  <select id="login"  parameterType="java.util.Map" resultType="homework.MemberVO"> <!-- 두 개 이상의 변수를 받을 때는 객체로 받아온다. -->
+    SELECT *
+	FROM member_t
+	WHERE m_id = #{key_id} AND m_pw = #{key_pw}
+    <!-- values의 myBatis 변수명은 parameterType에서 받아오는 객체의 멤버변수명을 사용해야한다. -->
+  </select>
+</mapper>
